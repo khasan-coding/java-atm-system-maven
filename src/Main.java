@@ -4,8 +4,10 @@ public class Main {
         // Create a new account object with account number 1001 and starting balance of $500
         Account myAccount = new Account("1001", 500.00);
 
+        User user = new User("Khasan", "123456","1111", myAccount);
+
         // Create an ATM object and give it the account to work with
-        ATM atm = new ATM(myAccount);
+        ATM atm = new ATM(user);
 
         // Start the ATM menu
         atm.start();

@@ -2,11 +2,11 @@ import java.util.Scanner;
 
 public class ATM {
 
-    private Account account;
+    private User user;
     private Scanner scanner;
 
-    public ATM(Account account) {
-        this.account = account;
+    public ATM(User user) {
+        this.user = user;
         this.scanner = new Scanner(System.in);
     }
 
@@ -27,9 +27,9 @@ public class ATM {
             // Read the user's menu choice from the console
             int choice = scanner.nextInt();
 
-            // If the user chooses option 1, display the current account balance
+            // If the user chooses option 1, display the current user.getAccount( balance
             if (choice == 1) {
-                System.out.println("Your balance is: $" + account.getBalance());
+                System.out.println("Your balance is: $" + user.getAccount().getBalance());
             }
 
             // If the user chooses option 2, ask for a deposit amount and add it to the balance
@@ -37,9 +37,9 @@ public class ATM {
                 System.out.print("Enter deposit amount: $");
                 double depositAmount = scanner.nextDouble();
 
-                account.deposit(depositAmount);
+                user.getAccount().deposit(depositAmount);
 
-                System.out.println("New balance: $" + account.getBalance());
+                System.out.println("New balance: $" + user.getAccount().getBalance());
             }
 
             // If the user chooses option 3, ask for a withdrawal amount and subtract it from the balance if valid
@@ -47,9 +47,9 @@ public class ATM {
                 System.out.print("Enter withdrawal amount: $");
                 double withdrawalAmount = scanner.nextDouble();
 
-                account.withdraw(withdrawalAmount);
+                user.getAccount().withdraw(withdrawalAmount);
 
-                System.out.println("New balance: $" + account.getBalance());
+                System.out.println("New balance: $" + user.getAccount().getBalance());
             }
 
             // If the user chooses option 4, exit the ATM
