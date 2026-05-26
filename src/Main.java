@@ -9,45 +9,52 @@ public class Main {
         // Create a new account object with account number 1001 and starting balance of $500
         Account myAccount = new Account("1001", 500.00);
 
-        // Display the ATM menu
-        System.out.println("===== ATM Menu =====");
-        System.out.println("1. Check Balance");
-        System.out.println("2. Deposit Money");
-        System.out.println("3. Withdraw Money");
-        System.out.println("4. Exit");
+        boolean isRunning = true;
 
-        System.out.print("Choose an option: ");
-        // Read the user's menu choice from the console
-        int choice = scanner.nextInt();
+        while (isRunning) {
 
-        // If the user chooses option 1, display the current account balance
-        if (choice == 1) {
-            System.out.println("Your balance is: $" + myAccount.getBalance());
-        }
+            // Display the ATM menu
+            System.out.println("===== ATM Menu =====");
+            System.out.println("1. Check Balance");
+            System.out.println("2. Deposit Money");
+            System.out.println("3. Withdraw Money");
+            System.out.println("4. Exit");
 
-        // If the user chooses option 2, ask for a deposit amount and add it to the balance
-        if (choice == 2) {
-            System.out.print("Enter deposit amount: $");
-            double depositAmount = scanner.nextDouble();
+            System.out.print("Choose an option: ");
+            // Read the user's menu choice from the console
+            int choice = scanner.nextInt();
 
-            myAccount.deposit(depositAmount);
+            // If the user chooses option 1, display the current account balance
+            if (choice == 1) {
+                System.out.println("Your balance is: $" + myAccount.getBalance());
+            }
 
-            System.out.println("New balance: $" + myAccount.getBalance());
-        }
+            // If the user chooses option 2, ask for a deposit amount and add it to the balance
+            if (choice == 2) {
+                System.out.print("Enter deposit amount: $");
+                double depositAmount = scanner.nextDouble();
 
-        // If the user chooses option 3, ask for a withdrawal amount and subtract it from the balance if valid
-        if (choice == 3) {
-            System.out.print("Enter withdrawal amount: $");
-            double withdrawalAmount = scanner.nextDouble();
+                myAccount.deposit(depositAmount);
 
-            myAccount.withdraw(withdrawalAmount);
+                System.out.println("New balance: $" + myAccount.getBalance());
+            }
 
-            System.out.println("New balance: $" + myAccount.getBalance());
-        }
+            // If the user chooses option 3, ask for a withdrawal amount and subtract it from the balance if valid
+            if (choice == 3) {
+                System.out.print("Enter withdrawal amount: $");
+                double withdrawalAmount = scanner.nextDouble();
 
-        // If the user chooses option 4, exit the ATM
-        if (choice == 4) {
-            System.out.println("Thank you for using the ATM. Goodbye!");
+                myAccount.withdraw(withdrawalAmount);
+
+                System.out.println("New balance: $" + myAccount.getBalance());
+            }
+
+            // If the user chooses option 4, exit the ATM
+            if (choice == 4) {
+                System.out.println("Thank you for using the ATM. Goodbye!");
+                isRunning = false;
+            }
+
         }
     }
 }
