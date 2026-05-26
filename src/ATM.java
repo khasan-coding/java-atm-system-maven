@@ -10,21 +10,30 @@ public class ATM {
         this.scanner = new Scanner(System.in);
     }
 
-    // Handles user login by checking card number and PIN
+    // Handles user login by allowing up to 3 attempts to enter the correct card number and PIN
     private boolean login() {
-        System.out.print("Enter card number: ");
-        String enteredCardNumber = scanner.next();
+        int attempts = 0;
+        int maxAttempts = 3;
 
-        System.out.print("Enter PIN: ");
-        String enteredPin = scanner.next();
+        while (attempts < maxAttempts) {
+            System.out.print("Enter card number: ");
+            String enteredCardNumber = scanner.next();
 
-        if (user.isCardNumberCorrect(enteredCardNumber) && user.isPinCorrect(enteredPin)) {
-            System.out.println("Login successful.");
-            return true;
-        } else {
-            System.out.println("Error: Invalid card number or PIN.");
-            return false;
+            System.out.print("Enter PIN: ");
+            String enteredPin = scanner.next();
+
+            if (user.isCardNumberCorrect(enteredCardNumber) && user.isPinCorrect(enteredPin)) {
+                System.out.println("Login successful.");
+                return true;
+            } else {
+                attempts++;
+                System.out.println("Error: Invalid card number or PIN.");
+                System.out.println("Attempts remaining: " + (maxAttempts - attempts));
+            }
         }
+
+        System.out.println("Too many failed attempts. Access denied.");
+        return false;
     }
 
     public void start() {
