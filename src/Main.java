@@ -34,5 +34,15 @@ public class Main {
 
             System.out.println("New balance: $" + myAccount.getBalance());
         }
+
+        // If the user chooses option 3, ask for a withdrawal amount and subtract it from the balance if valid
+        if (choice == 3) {
+            System.out.print("Enter withdrawal amount: $");
+            double withdrawalAmount = scanner.nextDouble();
+
+            myAccount.withdraw(withdrawalAmount);
+
+            System.out.println("New balance: $" + myAccount.getBalance());
+        }
     }
 }
