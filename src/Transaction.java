@@ -4,7 +4,6 @@ public class Transaction {
     private double amount;
     private double balanceAfterTransaction;
 
-
     public Transaction(String type, double amount, double balanceAfterTransaction) {
         this.type = type;
         this.amount = amount;

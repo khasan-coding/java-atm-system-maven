@@ -51,7 +51,9 @@ public class ATM {
             System.out.println("1. Check Balance");
             System.out.println("2. Deposit Money");
             System.out.println("3. Withdraw Money");
-            System.out.println("4. Exit");
+            System.out.println("4. View Transaction History");
+            System.out.println("5. Exit");
+
 
             System.out.print("Choose an option: ");
             // Read the user's menu choice from the console
@@ -82,15 +84,19 @@ public class ATM {
                 System.out.println("New balance: $" + user.getAccount().getBalance());
             }
 
-            // If the user chooses option 4, exit the ATM
+            // If the user chooses option 4, display the transaction history
             else if (choice == 4) {
+                user.getAccount().displayTransactionHistory();
+            }
+
+            // If the user chooses option 5, exit the ATM
+            else if (choice == 5) {
                 System.out.println("Thank you for using the ATM. Goodbye!");
                 isRunning = false;
             }
-
             // If the user enters a number that is not on the menu, show an error message
             else {
-                System.out.println("Error: Invalid option. Please choose 1, 2, 3, or 4.");
+                System.out.println("Error: Invalid option. Please choose 1, 2, 3, 4, or 5.");
             }
 
         }
