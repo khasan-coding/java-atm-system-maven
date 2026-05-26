@@ -8,13 +8,13 @@ public class Account {
     // Stores the account's transaction history
     private ArrayList<Transaction> transactions;
 
-    public Account(String accountNumber, double startingBalance){
+    public Account(String accountNumber, double startingBalance) {
         this.accountNumber = accountNumber;
         this.balance = startingBalance;
         this.transactions = new ArrayList<>();
     }
 
-    public double getBalance(){
+    public double getBalance() {
         return balance;
     }
 
@@ -33,12 +33,13 @@ public class Account {
         }
     }
 
-    public void withdraw(double amount){
-        if(amount <= 0){
+    // Removes money from the account only if the amount is valid and enough balance exists
+    public void withdraw(double amount) {
+        if (amount <= 0) {
             System.out.println("Error: Withdrawal amount must be greater than 0.");
-        }else if(amount > balance){
+        } else if (amount > balance) {
             System.out.println("Error: Insufficient funds.");
-        } else{
+        } else {
             balance -= amount;
             transactions.add(new Transaction("Withdrawal", amount, balance));
         }

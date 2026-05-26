@@ -12,6 +12,11 @@ public class User {
         this.account = account;
     }
 
+    // Returns the user's name
+    public String getName() {
+        return name;
+    }
+
     // Returns the account connected to this user
     public Account getAccount() {
         return account;

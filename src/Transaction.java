@@ -1,9 +1,15 @@
 public class Transaction {
 
+    // Stores the type of transaction, such as Deposit or Withdrawal
     private String type;
+
+    // Stores the amount involved in the transaction
     private double amount;
+
+    // Stores the account balance after the transaction is completed
     private double balanceAfterTransaction;
 
+    // Constructor used to create a new transaction record
     public Transaction(String type, double amount, double balanceAfterTransaction) {
         this.type = type;
         this.amount = amount;
