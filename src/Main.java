@@ -24,5 +24,15 @@ public class Main {
         if (choice == 1) {
             System.out.println("Your balance is: $" + myAccount.getBalance());
         }
+
+        // If the user chooses option 2, ask for a deposit amount and add it to the balance
+        if (choice == 2) {
+            System.out.print("Enter deposit amount: $");
+            double depositAmount = scanner.nextDouble();
+
+            myAccount.deposit(depositAmount);
+
+            System.out.println("New balance: $" + myAccount.getBalance());
+        }
     }
 }
