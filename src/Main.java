@@ -30,7 +30,7 @@ public class Main {
             }
 
             // If the user chooses option 2, ask for a deposit amount and add it to the balance
-            if (choice == 2) {
+            else if (choice == 2) {
                 System.out.print("Enter deposit amount: $");
                 double depositAmount = scanner.nextDouble();
 
@@ -40,7 +40,7 @@ public class Main {
             }
 
             // If the user chooses option 3, ask for a withdrawal amount and subtract it from the balance if valid
-            if (choice == 3) {
+            else if (choice == 3) {
                 System.out.print("Enter withdrawal amount: $");
                 double withdrawalAmount = scanner.nextDouble();
 
@@ -50,9 +50,14 @@ public class Main {
             }
 
             // If the user chooses option 4, exit the ATM
-            if (choice == 4) {
+            else if (choice == 4) {
                 System.out.println("Thank you for using the ATM. Goodbye!");
                 isRunning = false;
+            }
+
+            // If the user enters a number that is not on the menu, show an error message
+            else {
+                System.out.println("Error: Invalid option. Please choose 1, 2, 3, or 4.");
             }
 
         }
