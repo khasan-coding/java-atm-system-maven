@@ -12,6 +12,11 @@ public class Account {
         return balance;
     }
 
+    // Returns the account number
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
     public void deposit(double amount){
         if(amount > 0) {
             balance += amount;
