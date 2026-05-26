@@ -10,7 +10,28 @@ public class ATM {
         this.scanner = new Scanner(System.in);
     }
 
+    // Handles user login by checking card number and PIN
+    private boolean login() {
+        System.out.print("Enter card number: ");
+        String enteredCardNumber = scanner.next();
+
+        System.out.print("Enter PIN: ");
+        String enteredPin = scanner.next();
+
+        if (user.isCardNumberCorrect(enteredCardNumber) && user.isPinCorrect(enteredPin)) {
+            System.out.println("Login successful.");
+            return true;
+        } else {
+            System.out.println("Error: Invalid card number or PIN.");
+            return false;
+        }
+    }
+
     public void start() {
+
+        if (!login()) {
+            return;
+        }
 
         boolean isRunning = true;
 
