@@ -44,5 +44,10 @@ public class Main {
 
             System.out.println("New balance: $" + myAccount.getBalance());
         }
+
+        // If the user chooses option 4, exit the ATM
+        if (choice == 4) {
+            System.out.println("Thank you for using the ATM. Goodbye!");
+        }
     }
 }
