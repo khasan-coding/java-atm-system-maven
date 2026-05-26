@@ -10,7 +10,7 @@ public class Main {
         // Deposit $100 into the account
         myAccount.deposit(100.00);
         // Print the balance after the valid deposit
-        System.out.println("After deposit: $ " + myAccount.getBalance());
+        System.out.println("After deposit: $" + myAccount.getBalance());
 
         // Try to deposit a negative amount.
         // This should NOT be allowed because deposits must be greater than 0.
@@ -24,5 +24,15 @@ public class Main {
 
         // Print the balance after withdrawal
         System.out.println("After withdrawal: $" + myAccount.getBalance());
+
+        // Try to withdraw a negative amount.
+        // This should NOT be allowed.
+        myAccount.withdraw(-25.00);
+        System.out.println("After invalid withdrawal: $" + myAccount.getBalance());
+
+        // Try to withdraw more than the current balance.
+        // This should NOT be allowed.
+        myAccount.withdraw(10000.00);
+        System.out.println("After overdraft attempt: $" + myAccount.getBalance());
     }
 }

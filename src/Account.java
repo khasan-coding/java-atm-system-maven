@@ -16,12 +16,18 @@ public class Account {
         if(amount > 0) {
             balance += amount;
         } else {
-            System.out.println("Deposit amount must be greater than 0.");
+            System.out.println("Error: Deposit amount must be greater than 0.");
         }
 
     }
 
     public void withdraw(double amount){
-        balance-= amount;
+        if(amount <= 0){
+            System.out.println("Error: Withdrawal amount must be greater than 0.");
+        }else if(amount > balance){
+            System.out.println("Error: Insufficient funds.");
+        } else{
+            balance -= amount;
+        }
     }
 }
