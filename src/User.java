@@ -16,4 +16,14 @@ public class User {
     public Account getAccount() {
         return account;
     }
+
+    // Checks if the entered card number matches this user's card number
+    public boolean isCardNumberCorrect(String enteredCardNumber) {
+        return cardNumber.equals(enteredCardNumber);
+    }
+
+    // Checks if the entered PIN matches this user's PIN
+    public boolean isPinCorrect(String enteredPin) {
+        return pin.equals(enteredPin);
+    }
 }
