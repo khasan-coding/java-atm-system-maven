@@ -49,6 +49,39 @@ public class ATM {
         return false;
     }
 
+    // Allows the user to select which account to use
+    private Account selectAccount() {
+        Account checking = currentUser.getCheckingAccount();
+        Account savings = currentUser.getSavingsAccount();
+
+        if (checking != null && savings != null) {
+            System.out.println("Select account:");
+            System.out.println("1. Checking");
+            System.out.println("2. Savings");
+            System.out.print("Choose an option: ");
+
+            int accountChoice = scanner.nextInt();
+
+            if (accountChoice == 1) {
+                return checking;
+            } else if (accountChoice == 2) {
+                return savings;
+            } else {
+                System.out.println("Error: Invalid account option.");
+                return null;
+            }
+        } else if (checking != null) {
+            System.out.println("Checking account selected.");
+            return checking;
+        } else if (savings != null) {
+            System.out.println("Savings account selected.");
+            return savings;
+        } else {
+            System.out.println("No accounts found for this user.");
+            return null;
+        }
+    }
+
     public void start() {
 
         if (!login()) {
@@ -57,7 +90,11 @@ public class ATM {
 
         System.out.println("Welcome, " + currentUser.getName() + "!");
 
-        Account account = currentUser.getAccount();
+        Account account = selectAccount();
+
+        if (account == null) {
+            return;
+        }
 
         boolean isRunning = true;
 

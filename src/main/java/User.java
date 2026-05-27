@@ -3,13 +3,15 @@ public class User {
     private String name;
     private String cardNumber;
     private String pin;
-    private Account account;
+    private Account checkingAccount;
+    private Account savingsAccount;
 
-    public User(String name, String cardNumber, String pin, Account account) {
+    public User(String name, String cardNumber, String pin, Account checkingAccount, Account savingsAccount) {
         this.name = name;
         this.cardNumber = cardNumber;
         this.pin = pin;
-        this.account = account;
+        this.checkingAccount = checkingAccount;
+        this.savingsAccount = savingsAccount;
     }
 
     // Returns the user's name
@@ -17,9 +19,19 @@ public class User {
         return name;
     }
 
-    // Returns the account connected to this user
-    public Account getAccount() {
-        return account;
+    // Returns the user's checking account
+    public Account getCheckingAccount() {
+        return checkingAccount;
+    }
+
+    // Returns the user's savings account
+    public Account getSavingsAccount() {
+        return savingsAccount;
+    }
+
+    // Checks if the user has both checking and savings accounts
+    public boolean hasBothAccounts() {
+        return checkingAccount != null && savingsAccount != null;
     }
 
     // Checks if the entered card number matches this user's card number

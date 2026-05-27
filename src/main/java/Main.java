@@ -3,15 +3,20 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
 
-        // Create account objects for different users
-        Account khasanAccount = new Account("1001", 500.00);
-        Account alexAccount = new Account("2001", 1000.00);
-        Account mariaAccount = new Account("3001", 750.00);
+        // Create checking and savings accounts for Khasan
+        Account khasanChecking = new Account("1001", 500.00);
+        Account khasanSavings = new Account("1002", 1000.00);
 
-        // Create user objects and connect each user to an account
-        User khasan = new User("Khasan", "123456", "1111", khasanAccount);
-        User alex = new User("Alex", "222222", "2222", alexAccount);
-        User maria = new User("Maria", "333333", "3333", mariaAccount);
+        // Create only a checking account for Alex
+        Account alexChecking = new Account("2001", 1000.00);
+
+        // Create only a savings account for Maria
+        Account mariaSavings = new Account("3001", 750.00);
+
+        // Create user objects and connect each user to their accounts
+        User khasan = new User("Khasan", "123456", "1111", khasanChecking, khasanSavings);
+        User alex = new User("Alex", "222222", "2222", alexChecking, null);
+        User maria = new User("Maria", "333333", "3333", null, mariaSavings);
 
         // Create a list to store all users
         ArrayList<User> users = new ArrayList<>();
