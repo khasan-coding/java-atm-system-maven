@@ -76,4 +76,46 @@ public class AccountController {
 
         return ResponseEntity.ok(response);
     }
+
+    @PostMapping("/api/accounts/{accountNumber}/withdraw")
+    public ResponseEntity<TransactionResponse> withdraw(
+            @PathVariable String accountNumber,
+            @RequestBody AmountRequest request) {
+
+        Account account = atmService.findAccountByAccountNumber(accountNumber);
+
+        if (account == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+
+        if (request.getAmount() <= 0) {
+            TransactionResponse response = new TransactionResponse(
+                    "Withdrawal amount must be greater than 0",
+                    account.getAccountNumber(),
+                    account.getBalance()
+            );
+
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        }
+
+        if (request.getAmount() > account.getBalance()) {
+            TransactionResponse response = new TransactionResponse(
+                    "Insufficient funds",
+                    account.getAccountNumber(),
+                    account.getBalance()
+            );
+
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        }
+
+        account.withdraw(request.getAmount());
+
+        TransactionResponse response = new TransactionResponse(
+                "Withdrawal successful",
+                account.getAccountNumber(),
+                account.getBalance()
+        );
+
+        return ResponseEntity.ok(response);
+    }
 }

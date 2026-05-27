@@ -62,3 +62,36 @@ Content-Type: application/json
 {
   "amount": 100
 }
+
+
+### Withdraw from checking account
+POST http://localhost:8080/api/accounts/1001/withdraw
+Content-Type: application/json
+
+{
+  "amount": 50
+}
+
+### Invalid withdrawal amount
+POST http://localhost:8080/api/accounts/1001/withdraw
+Content-Type: application/json
+
+{
+  "amount": -50
+}
+
+### Overdraft withdrawal
+POST http://localhost:8080/api/accounts/1001/withdraw
+Content-Type: application/json
+
+{
+  "amount": 10000
+}
+
+### Withdraw from account not found
+POST http://localhost:8080/api/accounts/9999/withdraw
+Content-Type: application/json
+
+{
+  "amount": 50
+}
