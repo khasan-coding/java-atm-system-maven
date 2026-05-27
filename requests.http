@@ -27,3 +27,13 @@ GET http://localhost:8080/api/users/333333/accounts
 
 ### User not found
 GET http://localhost:8080/api/users/999999/accounts
+
+
+### Get checking balance
+GET http://localhost:8080/api/accounts/1001/balance
+
+### Get savings balance
+GET http://localhost:8080/api/accounts/1002/balance
+
+### Account not found
+GET http://localhost:8080/api/accounts/9999/balance

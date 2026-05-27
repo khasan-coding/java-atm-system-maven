@@ -47,4 +47,20 @@ public class AtmService {
 
         return null;
     }
+
+    public Account findAccountByAccountNumber(String accountNumber) {
+        for (User user : users) {
+            if (user.getCheckingAccount() != null &&
+                    user.getCheckingAccount().getAccountNumber().equals(accountNumber)) {
+                return user.getCheckingAccount();
+            }
+
+            if (user.getSavingsAccount() != null &&
+                    user.getSavingsAccount().getAccountNumber().equals(accountNumber)) {
+                return user.getSavingsAccount();
+            }
+        }
+
+        return null;
+    }
 }

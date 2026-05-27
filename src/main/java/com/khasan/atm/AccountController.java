@@ -31,4 +31,17 @@ public class AccountController {
 
         return ResponseEntity.ok(response);
     }
+
+    @GetMapping("/api/accounts/{accountNumber}/balance")
+    public ResponseEntity<BalanceResponse> getAccountBalance(@PathVariable String accountNumber) {
+        Account account = atmService.findAccountByAccountNumber(accountNumber);
+
+        if (account == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+
+        BalanceResponse response = new BalanceResponse(account.getAccountNumber(), account.getBalance());
+
+        return ResponseEntity.ok(response);
+    }
 }
