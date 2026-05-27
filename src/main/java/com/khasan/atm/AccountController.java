@@ -2,9 +2,9 @@ package com.khasan.atm;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 public class AccountController {
@@ -41,6 +41,38 @@ public class AccountController {
         }
 
         BalanceResponse response = new BalanceResponse(account.getAccountNumber(), account.getBalance());
+
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/api/accounts/{accountNumber}/deposit")
+    public ResponseEntity<TransactionResponse> deposit(
+            @PathVariable String accountNumber,
+            @RequestBody AmountRequest request) {
+
+        Account account = atmService.findAccountByAccountNumber(accountNumber);
+
+        if (account == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+
+        if (request.getAmount() <= 0) {
+            TransactionResponse response = new TransactionResponse(
+                    "Deposit amount must be greater than 0",
+                    account.getAccountNumber(),
+                    account.getBalance()
+            );
+
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        }
+
+        account.deposit(request.getAmount());
+
+        TransactionResponse response = new TransactionResponse(
+                "Deposit successful",
+                account.getAccountNumber(),
+                account.getBalance()
+        );
 
         return ResponseEntity.ok(response);
     }

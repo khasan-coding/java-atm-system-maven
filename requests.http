@@ -37,3 +37,28 @@ GET http://localhost:8080/api/accounts/1002/balance
 
 ### Account not found
 GET http://localhost:8080/api/accounts/9999/balance
+
+
+### Deposit into checking account
+POST http://localhost:8080/api/accounts/1001/deposit
+Content-Type: application/json
+
+{
+  "amount": 100
+}
+
+### Invalid deposit amount
+POST http://localhost:8080/api/accounts/1001/deposit
+Content-Type: application/json
+
+{
+  "amount": -100
+}
+
+### Deposit into account not found
+POST http://localhost:8080/api/accounts/9999/deposit
+Content-Type: application/json
+
+{
+  "amount": 100
+}
