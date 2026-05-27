@@ -45,6 +45,21 @@ public class Account {
         }
     }
 
+    // Adds a custom transaction record to the account history
+    public void addTransaction(String type, double amount) {
+        transactions.add(new Transaction(type, amount, balance));
+    }
+
+    // Increases the balance without automatically creating a deposit transaction
+    public void increaseBalance(double amount) {
+        balance += amount;
+    }
+
+    // Decreases the balance without automatically creating a withdrawal transaction
+    public void decreaseBalance(double amount) {
+        balance -= amount;
+    }
+
     // Displays all successful transactions for this account
     public void displayTransactionHistory() {
         if (transactions.isEmpty()) {

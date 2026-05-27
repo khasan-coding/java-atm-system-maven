@@ -111,8 +111,12 @@ public class ATM {
             if (amount > checking.getBalance()) {
                 System.out.println("Error: Insufficient funds in checking account.");
             } else {
-                checking.withdraw(amount);
-                savings.deposit(amount);
+                checking.decreaseBalance(amount);
+                checking.addTransaction("Transfer Out", amount);
+
+                savings.increaseBalance(amount);
+                savings.addTransaction("Transfer In", amount);
+
                 System.out.println("Transfer successful.");
                 System.out.println("Checking balance: $" + checking.getBalance());
                 System.out.println("Savings balance: $" + savings.getBalance());
@@ -121,8 +125,12 @@ public class ATM {
             if (amount > savings.getBalance()) {
                 System.out.println("Error: Insufficient funds in savings account.");
             } else {
-                savings.withdraw(amount);
-                checking.deposit(amount);
+                savings.decreaseBalance(amount);
+                savings.addTransaction("Transfer Out", amount);
+
+                checking.increaseBalance(amount);
+                checking.addTransaction("Transfer In", amount);
+
                 System.out.println("Transfer successful.");
                 System.out.println("Checking balance: $" + checking.getBalance());
                 System.out.println("Savings balance: $" + savings.getBalance());
@@ -199,7 +207,7 @@ public class ATM {
                 transferBetweenAccounts();
             }
 
-            // If the user chooses option 5, exit the ATM
+            // If the user chooses option 6, exit the ATM
             else if (choice == 6) {
                 System.out.println("Thank you for using the ATM. Goodbye!");
                 isRunning = false;
@@ -207,7 +215,8 @@ public class ATM {
 
             // If the user enters a number that is not on the menu, show an error message
             else {
-                System.out.println("Error: Invalid option. Please choose 1, 2, 3, 4, 5, or 6.");            }
+                System.out.println("Error: Invalid option. Please choose 1, 2, 3, 4, 5, or 6.");
+            }
         }
     }
 }
