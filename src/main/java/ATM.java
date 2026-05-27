@@ -1,16 +1,18 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class ATM {
 
-    private User user;
+    private ArrayList<User> users;
+    private User currentUser;
     private Scanner scanner;
 
-    public ATM(User user) {
-        this.user = user;
+    public ATM(ArrayList<User> users) {
+        this.users = users;
         this.scanner = new Scanner(System.in);
     }
 
-    // Handles user login by allowing up to 3 attempts to enter the correct card number and PIN
+    // Handles user login by searching for a matching card number and checking the PIN
     private boolean login() {
         int attempts = 0;
         int maxAttempts = 3;
@@ -19,10 +21,21 @@ public class ATM {
             System.out.print("Enter card number: ");
             String enteredCardNumber = scanner.next();
 
+            User foundUser = null;
+
+            // Search through all users to find a matching card number
+            for (User user : users) {
+                if (user.isCardNumberCorrect(enteredCardNumber)) {
+                    foundUser = user;
+                    break;
+                }
+            }
+
             System.out.print("Enter PIN: ");
             String enteredPin = scanner.next();
 
-            if (user.isCardNumberCorrect(enteredCardNumber) && user.isPinCorrect(enteredPin)) {
+            if (foundUser != null && foundUser.isPinCorrect(enteredPin)) {
+                currentUser = foundUser;
                 System.out.println("Login successful.");
                 return true;
             } else {
@@ -42,9 +55,9 @@ public class ATM {
             return;
         }
 
-        System.out.println("Welcome, " + user.getName() + "!");
+        System.out.println("Welcome, " + currentUser.getName() + "!");
 
-        Account account = user.getAccount();
+        Account account = currentUser.getAccount();
 
         boolean isRunning = true;
 
