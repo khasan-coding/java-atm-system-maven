@@ -24,6 +24,10 @@ The project was manually tested through the console. The purpose of testing was 
 | T10 | View transaction history | Make a valid deposit and withdrawal, then choose option `4` | Transaction history displays successful transactions | Passed |
 | T11 | Invalid menu option | Enter a number outside `1-5` | Error message appears asking user to choose a valid option | Passed |
 | T12 | Exit ATM | Choose option `5` | Goodbye message appears and program ends | Passed |
+| T13 | Login as second user | Enter card number `222222` and PIN `2222` | Login successful message appears and ATM welcomes Alex | Passed |
+| T14 | Login as third user | Enter card number `333333` and PIN `3333` | Login successful message appears and ATM welcomes Maria | Passed |
+| T15 | Separate user balances | Log in as Alex and check balance | Alex's account balance displays independently from other users | Passed |
+
 
 ## Notes
 
