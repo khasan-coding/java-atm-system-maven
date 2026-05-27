@@ -1,0 +1,17 @@
+### Successful login
+POST http://localhost:8080/api/login
+Content-Type: application/json
+
+{
+  "cardNumber": "123456",
+  "pin": "1111"
+}
+
+### Failed login
+POST http://localhost:8080/api/login
+Content-Type: application/json
+
+{
+  "cardNumber": "123456",
+  "pin": "9999"
+}
