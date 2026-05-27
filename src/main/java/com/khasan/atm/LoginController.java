@@ -1,5 +1,7 @@
 package com.khasan.atm;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,13 +16,15 @@ public class LoginController {
     }
 
     @PostMapping("/api/login")
-    public LoginResponse login(@RequestBody LoginRequest request) {
+    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request) {
         User user = atmService.login(request.getCardNumber(), request.getPin());
 
         if (user != null) {
-            return new LoginResponse("Login successful", user.getName());
+            LoginResponse response = new LoginResponse("Login successful", user.getName());
+            return ResponseEntity.ok(response);
         } else {
-            return new LoginResponse("Invalid card number or PIN", null);
+            LoginResponse response = new LoginResponse("Invalid card number or PIN", null);
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
         }
     }
 }
