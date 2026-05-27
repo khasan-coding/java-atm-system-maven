@@ -1,21 +1,21 @@
-Copy and paste this full updated README.md:
-
 # Java ATM Banking System
 ## Project Overview
-The Java ATM Banking System is a console-based application built with plain Java and object-oriented programming. The project allows a user to log in, check their balance, deposit money, withdraw money, view transaction history, and exit the ATM system.
+The Java ATM Banking System is a console-based application built with plain Java and object-oriented programming. The project allows users to log in, select an available account, check their balance, deposit money, withdraw money, transfer money between checking and savings accounts, view transaction history, and exit the ATM system.
 This project was built step by step using SDLC, Agile-style iterations, Git version control, manual testing, and object-oriented design principles.
 The Maven version of this project also includes automated unit testing with JUnit.
 ## Features
-- Transfer money between checking and savings accounts
 - Support for multiple users
+- Each user can have a checking account, a savings account, or both
 - Each user has their own account balance and transaction history
 - User login with card number and PIN
 - Three-attempt login limit
 - Personalized welcome message
+- Account selection after login
 - Check account balance
 - Deposit money with validation
 - Withdraw money with validation
 - Prevent overdraft withdrawals
+- Transfer money between checking and savings accounts
 - View transaction history
 - Exit the ATM system
 ## Object-Oriented Programming Concepts Used
@@ -23,10 +23,13 @@ The Maven version of this project also includes automated unit testing with JUni
 - Encapsulation with private fields
 - Constructors
 - Getter methods
-- Method behavior through deposit, withdraw, and login actions
+- Method behavior through deposit, withdraw, login, account selection, and transfer actions
+- Has-a relationship between ATM and User
 - Has-a relationship between User and Account
 - Has-a relationship between Account and Transaction history
+- ArrayList collections for multiple users and transaction history
 - Separation of concerns between Main, ATM, User, Account, and Transaction classes
+- Object collaboration between classes
 ## Project Structure
 ```text
 java-atm-system-maven/
@@ -63,10 +66,22 @@ How to Run
 5. Click Run.
 6. Log in using the sample credentials below.
 
-Sample Login
+Sample Logins
+
+User with Checking and Savings
 
 Card Number: 123456
 PIN: 1111
+
+User with Checking Only
+
+Card Number: 222222
+PIN: 2222
+
+User with Savings Only
+
+Card Number: 333333
+PIN: 3333
 
 How to Run Tests
 
@@ -110,7 +125,11 @@ Current automated tests include:
 * Incorrect PIN returns false
 * Correct card number returns true
 * Incorrect card number returns false
-* User is connected to the correct account
+* User is connected to the correct checking account
+* User is connected to the correct savings account
+* User with checking and savings returns true for hasBothAccounts()
+* User with checking only returns false for hasBothAccounts()
+* User with savings only returns false for hasBothAccounts()
 
 SDLC and Agile Process
 
@@ -130,13 +149,16 @@ The development process included:
 
 The project was developed in small increments, similar to Agile sprints. Each feature was built, tested, and committed before moving to the next feature.
 
+Current Version Highlights
+
+The current version supports multiple users and account selection. A user may have a checking account, a savings account, or both. Transfers are available only when the user has both checking and savings accounts.
+
 Future Improvements
 
 Future improvements may include:
 
 * Support for more advanced user account management
-* Separate checking and savings accounts
-* Improve transfer transaction history with Transfer In and Transfer Out labels
+* Improved transfer transaction history with Transfer In and Transfer Out labels
 * PIN-only login to better simulate a real ATM card insertion flow
 * Java Swing or JavaFX graphical user interface
 * Database storage for users, accounts, and transactions
