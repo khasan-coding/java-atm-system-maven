@@ -1,37 +1,37 @@
-# Java ATM Banking System
+# Java com.khasan.atm.ATM Banking System
 
 ![Maven Test](https://github.com/khasan-coding/java-atm-system-maven/actions/workflows/maven-test.yml/badge.svg)
 
 ## Project Overview
-The Java ATM Banking System is a console-based application built with plain Java and object-oriented programming. The project allows users to log in, select an available account, check their balance, deposit money, withdraw money, transfer money between checking and savings accounts, view transaction history, and exit the ATM system.
+The Java com.khasan.atm.ATM Banking System is a console-based application built with plain Java and object-oriented programming. The project allows users to log in, select an available account, check their balance, deposit money, withdraw money, transfer money between checking and savings accounts, view transaction history, and exit the com.khasan.atm.ATM system.
 This project was built step by step using SDLC, Agile-style iterations, Git version control, manual testing, and object-oriented design principles.
 The Maven version of this project also includes automated unit testing with JUnit.
 ## Features
 - Support for multiple users
 - Each user can have a checking account, a savings account, or both
 - Each user has their own account balance and transaction history
-- User login with card number and PIN
+- com.khasan.atm.User login with card number and PIN
 - Three-attempt login limit
 - Personalized welcome message
-- Account selection after login
+- com.khasan.atm.Account selection after login
 - Check account balance
 - Deposit money with validation
 - Withdraw money with validation
 - Prevent overdraft withdrawals
 - Transfer money between checking and savings accounts
 - View transaction history
-- Exit the ATM system
+- Exit the com.khasan.atm.ATM system
 ## Object-Oriented Programming Concepts Used
 - Classes and objects
 - Encapsulation with private fields
 - Constructors
 - Getter methods
 - Method behavior through deposit, withdraw, login, account selection, and transfer actions
-- Has-a relationship between ATM and User
-- Has-a relationship between User and Account
-- Has-a relationship between Account and Transaction history
+- Has-a relationship between com.khasan.atm.ATM and com.khasan.atm.User
+- Has-a relationship between com.khasan.atm.User and com.khasan.atm.Account
+- Has-a relationship between com.khasan.atm.Account and com.khasan.atm.Transaction history
 - ArrayList collections for multiple users and transaction history
-- Separation of concerns between Main, ATM, User, Account, and Transaction classes
+- Separation of concerns between com.khasan.atm.Main, com.khasan.atm.ATM, com.khasan.atm.User, com.khasan.atm.Account, and com.khasan.atm.Transaction classes
 - Object collaboration between classes
 ## Project Structure
 ```text
@@ -45,11 +45,11 @@ java-atm-system-maven/
 ├── src/
 │   ├── main/
 │   │   └── java/
-│   │       ├── Main.java
-│   │       ├── ATM.java
-│   │       ├── User.java
-│   │       ├── Account.java
-│   │       └── Transaction.java
+│   │       ├── com.khasan.atm.Main.java
+│   │       ├── com.khasan.atm.ATM.java
+│   │       ├── com.khasan.atm.User.java
+│   │       ├── com.khasan.atm.Account.java
+│   │       └── com.khasan.atm.Transaction.java
 │   │
 │   └── test/
 │       └── java/
@@ -65,23 +65,23 @@ How to Run
 1. Open the project in IntelliJ IDEA.
 2. Make sure the project is using Java 17 or later.
 3. Make sure Maven is loaded.
-4. Open Main.java inside src/main/java.
+4. Open com.khasan.atm.Main.java inside src/main/java.
 5. Click Run.
 6. Log in using the sample credentials below.
 
 Sample Logins
 
-User with Checking and Savings
+com.khasan.atm.User with Checking and Savings
 
 Card Number: 123456
 PIN: 1111
 
-User with Checking Only
+com.khasan.atm.User with Checking Only
 
 Card Number: 222222
 PIN: 2222
 
-User with Savings Only
+com.khasan.atm.User with Savings Only
 
 Card Number: 333333
 PIN: 3333
@@ -128,11 +128,11 @@ Current automated tests include:
 * Incorrect PIN returns false
 * Correct card number returns true
 * Incorrect card number returns false
-* User is connected to the correct checking account
-* User is connected to the correct savings account
-* User with checking and savings returns true for hasBothAccounts()
-* User with checking only returns false for hasBothAccounts()
-* User with savings only returns false for hasBothAccounts()
+* com.khasan.atm.User is connected to the correct checking account
+* com.khasan.atm.User is connected to the correct savings account
+* com.khasan.atm.User with checking and savings returns true for hasBothAccounts()
+* com.khasan.atm.User with checking only returns false for hasBothAccounts()
+* com.khasan.atm.User with savings only returns false for hasBothAccounts()
 
 SDLC and Agile Process
 
@@ -140,7 +140,7 @@ This project was built using Software Development Life Cycle concepts and Agile-
 
 The development process included:
 
-* Planning the ATM project purpose and scope
+* Planning the com.khasan.atm.ATM project purpose and scope
 * Analyzing functional and non-functional requirements
 * Designing classes and responsibilities
 * Developing features step by step
@@ -161,7 +161,7 @@ Future Improvements
 Future improvements may include:
 
 * Support for more advanced user account management
-* PIN-only login to better simulate a real ATM card insertion flow
+* PIN-only login to better simulate a real com.khasan.atm.ATM card insertion flow
 * Java Swing or JavaFX graphical user interface
 * Database storage for users, accounts, and transactions
 * Additional JUnit test coverage

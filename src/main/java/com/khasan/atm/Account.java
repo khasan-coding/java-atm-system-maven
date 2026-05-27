@@ -1,3 +1,5 @@
+package com.khasan.atm;
+
 import java.util.ArrayList;
 
 public class Account {
@@ -65,7 +67,7 @@ public class Account {
         if (transactions.isEmpty()) {
             System.out.println("No transactions found.");
         } else {
-            System.out.println("===== Transaction History =====");
+            System.out.println("===== com.khasan.atm.Transaction History =====");
 
             for (Transaction transaction : transactions) {
                 transaction.displayTransaction();

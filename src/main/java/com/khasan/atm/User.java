@@ -1,3 +1,5 @@
+package com.khasan.atm;
+
 public class User {
 
     private String name;

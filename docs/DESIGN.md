@@ -2,11 +2,11 @@
 
 ## Project Name
 
-Java ATM Banking System
+Java com.khasan.atm.ATM Banking System
 
 ## Design Overview
 
-The Java ATM Banking System is designed using object-oriented programming principles. The system separates responsibilities across multiple classes so that each class has one main purpose. This improves readability, maintainability, testing, and future scalability.
+The Java com.khasan.atm.ATM Banking System is designed using object-oriented programming principles. The system separates responsibilities across multiple classes so that each class has one main purpose. This improves readability, maintainability, testing, and future scalability.
 
 The current version supports multiple users, checking and savings accounts, account selection, deposits, withdrawals, transaction history, and transfers between checking and savings accounts.
 
@@ -14,20 +14,20 @@ The current version supports multiple users, checking and savings accounts, acco
 
 | Class | Responsibility |
 |---|---|
-| `Main` | Starts the program by creating account objects, user objects, the user list, and the ATM system |
-| `ATM` | Handles login, account selection, menu display, user input, ATM actions, and transfers |
-| `User` | Stores user information such as name, card number, PIN, checking account, and savings account |
-| `Account` | Handles account balance, deposits, withdrawals, validation, and transaction history |
-| `Transaction` | Represents one transaction record such as a deposit or withdrawal |
+| `com.khasan.atm.Main` | Starts the program by creating account objects, user objects, the user list, and the com.khasan.atm.ATM system |
+| `com.khasan.atm.ATM` | Handles login, account selection, menu display, user input, com.khasan.atm.ATM actions, and transfers |
+| `com.khasan.atm.User` | Stores user information such as name, card number, PIN, checking account, and savings account |
+| `com.khasan.atm.Account` | Handles account balance, deposits, withdrawals, validation, and transaction history |
+| `com.khasan.atm.Transaction` | Represents one transaction record such as a deposit or withdrawal |
 
 ## Class Relationships
 
-- `ATM` has many `User` objects through an `ArrayList<User>`.
-- `ATM` tracks the currently logged-in user with `currentUser`.
-- `User` may have a checking account.
-- `User` may have a savings account.
-- `User` can have both checking and savings accounts, which enables transfers.
-- `Account` has many `Transaction` objects through an `ArrayList<Transaction>`.
+- `com.khasan.atm.ATM` has many `com.khasan.atm.User` objects through an `ArrayList<com.khasan.atm.User>`.
+- `com.khasan.atm.ATM` tracks the currently logged-in user with `currentUser`.
+- `com.khasan.atm.User` may have a checking account.
+- `com.khasan.atm.User` may have a savings account.
+- `com.khasan.atm.User` can have both checking and savings accounts, which enables transfers.
+- `com.khasan.atm.Account` has many `com.khasan.atm.Transaction` objects through an `ArrayList<com.khasan.atm.Transaction>`.
 
 ## OOP Concepts Used
 
@@ -42,13 +42,13 @@ The current version supports multiple users, checking and savings accounts, acco
 
 ## Design Reasoning
 
-The project was designed this way to avoid placing all logic inside `Main.java`. Instead, each class has a clear job. This makes the code easier to understand, test, debug, and expand.
+The project was designed this way to avoid placing all logic inside `com.khasan.atm.Main.java`. Instead, each class has a clear job. This makes the code easier to understand, test, debug, and expand.
 
-For example, withdrawal validation belongs in the `Account` class because it is an account rule. Login and account selection belong in the `ATM` class because the ATM controls user access and user interaction. Transaction details belong in the `Transaction` class because each transaction should be represented as its own object.
+For example, withdrawal validation belongs in the `com.khasan.atm.Account` class because it is an account rule. Login and account selection belong in the `com.khasan.atm.ATM` class because the com.khasan.atm.ATM controls user access and user interaction. com.khasan.atm.Transaction details belong in the `com.khasan.atm.Transaction` class because each transaction should be represented as its own object.
 
-The `User` class was updated to support both checking and savings accounts. This allows the system to model a more realistic banking scenario where a user may have one account type or both account types. The ATM checks which accounts are available and allows account selection based on the user’s accounts.
+The `com.khasan.atm.User` class was updated to support both checking and savings accounts. This allows the system to model a more realistic banking scenario where a user may have one account type or both account types. The com.khasan.atm.ATM checks which accounts are available and allows account selection based on the user’s accounts.
 
-The transfer feature is handled by the `ATM` class because the transfer is a user action from the ATM menu. The transfer still relies on the `Account` class methods, such as `withdraw()` and `deposit()`, to update balances safely.
+The transfer feature is handled by the `com.khasan.atm.ATM` class because the transfer is a user action from the com.khasan.atm.ATM menu. The transfer still relies on the `com.khasan.atm.Account` class methods, such as `withdraw()` and `deposit()`, to update balances safely.
 
 ## Future Design Improvements
 

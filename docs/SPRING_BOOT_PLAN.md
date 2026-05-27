@@ -1,24 +1,24 @@
 # Spring Boot Backend Plan
 ## Project Name
-Java ATM Banking System - Spring Boot Backend Plan
+Java com.khasan.atm.ATM Banking System - Spring Boot Backend Plan
 ## Purpose
-The purpose of this plan is to describe how the current Java console ATM project can be converted into a Spring Boot backend API.
-The current project uses console input with `Scanner` and displays output with `System.out.println()`. In the Spring Boot version, the ATM system will receive HTTP requests and return JSON responses.
+The purpose of this plan is to describe how the current Java console com.khasan.atm.ATM project can be converted into a Spring Boot backend API.
+The current project uses console input with `Scanner` and displays output with `System.out.println()`. In the Spring Boot version, the com.khasan.atm.ATM system will receive HTTP requests and return JSON responses.
 ## Current Console Version
 The current application uses:
 - `Scanner` to read user input
 - `System.out.println()` to display menu options and messages
-- `ATM.java` to control login, account selection, menu actions, and transfers
-- `User.java` to store user information
-- `Account.java` to handle balance, deposit, withdrawal, validation, and transaction history
-- `Transaction.java` to store transaction records
+- `com.khasan.atm.ATM.java` to control login, account selection, menu actions, and transfers
+- `com.khasan.atm.User.java` to store user information
+- `com.khasan.atm.Account.java` to handle balance, deposit, withdrawal, validation, and transaction history
+- `com.khasan.atm.Transaction.java` to store transaction records
 ## What Will Change
 The console menu will eventually be replaced by REST API endpoints.
 Instead of this:
 ```text
-User types into console
-ATM reads input with Scanner
-ATM prints result with System.out.println()
+com.khasan.atm.User types into console
+com.khasan.atm.ATM reads input with Scanner
+com.khasan.atm.ATM prints result with System.out.println()
 ```
 
 The Spring Boot version will use this:
@@ -32,15 +32,15 @@ Classes We Can Keep
 
 The following classes can still be useful:
 
-* User
-* Account
-* Transaction
+* com.khasan.atm.User
+* com.khasan.atm.Account
+* com.khasan.atm.Transaction
 
 These classes contain the core business logic and data model.
 
 Classes That Will Change
 
-ATM.java will likely be replaced or refactored because it depends on console input.
+com.khasan.atm.ATM.java will likely be replaced or refactored because it depends on console input.
 
 The Spring Boot version will use:
 

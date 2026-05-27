@@ -1,3 +1,5 @@
+package com.khasan.atm;
+
 public class Transaction {
 
     // Stores the type of transaction, such as Deposit or Withdrawal
