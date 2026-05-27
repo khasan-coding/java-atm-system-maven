@@ -1,4 +1,7 @@
 # Java ATM Banking System
+
+![Maven Test](https://github.com/khasan-coding/java-atm-system-maven/actions/workflows/maven-test.yml/badge.svg)
+
 ## Project Overview
 The Java ATM Banking System is a console-based application built with plain Java and object-oriented programming. The project allows users to log in, select an available account, check their balance, deposit money, withdraw money, transfer money between checking and savings accounts, view transaction history, and exit the ATM system.
 This project was built step by step using SDLC, Agile-style iterations, Git version control, manual testing, and object-oriented design principles.
