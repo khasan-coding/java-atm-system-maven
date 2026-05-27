@@ -6,10 +6,11 @@ Java ATM Banking System
 
 ## Testing Overview
 
-The project was manually tested through the console. The purpose of testing was to verify that login, account selection, deposit, withdrawal, balance inquiry, transaction history, transfer functionality, and exit functionality worked correctly.
+The project includes both manual functional testing and automated unit testing.
 
-The project also includes automated unit tests using JUnit for core logic in the `Account` and `User` classes.
+Manual functional test cases are documented in this file. These tests verify full ATM user workflows through the console, such as login, account selection, deposits, withdrawals, transfers, transaction history, and exit behavior.
 
+Automated unit tests are written using JUnit and are located in `src/test/java`. These tests verify core business logic in smaller pieces, such as deposit validation, withdrawal validation, PIN checks, card number checks, and account relationship logic.
 ## Manual Test Cases
 
 | Test ID | Scenario | Steps | Expected Result | Status |
@@ -33,8 +34,8 @@ The project also includes automated unit tests using JUnit for core logic in the
 | T17 | Select savings account | Log in as Khasan and choose savings account | Savings account is selected and ATM menu opens | Passed |
 | T18 | Checking-only user account selection | Log in as Alex | Checking account is selected automatically | Passed |
 | T19 | Savings-only user account selection | Log in as Maria | Savings account is selected automatically | Passed |
-| T20 | Transfer from checking to savings | Log in as Khasan, choose transfer option, transfer `100` from checking to savings | Checking balance decreases by `100` and savings balance increases by `100` | Passed |
-| T21 | Transfer from savings to checking | Log in as Khasan, choose transfer option, transfer `100` from savings to checking | Savings balance decreases by `100` and checking balance increases by `100` | Passed |
+| T20 | Transfer from checking to savings | Log in as Khasan, choose transfer option, transfer `100` from checking to savings, then view transaction history for both accounts | Checking balance decreases by `100`, savings balance increases by `100`, checking history shows `Transfer Out`, and savings history shows `Transfer In` | Passed |
+| T21 | Transfer from savings to checking | Log in as Khasan, choose transfer option, transfer `100` from savings to checking, then view transaction history for both accounts | Savings balance decreases by `100`, checking balance increases by `100`, savings history shows `Transfer Out`, and checking history shows `Transfer In` | Passed |
 | T22 | Transfer unavailable for checking-only user | Log in as Alex and choose transfer option | Message appears saying transfer is only available with both checking and savings accounts | Passed |
 | T23 | Transfer unavailable for savings-only user | Log in as Maria and choose transfer option | Message appears saying transfer is only available with both checking and savings accounts | Passed |
 | T24 | Invalid transfer amount | Log in as Khasan and enter a transfer amount of `-100` | Error message appears and balances do not change | Passed |
