@@ -82,6 +82,56 @@ public class ATM {
         }
     }
 
+    // Transfers money between the current user's checking and savings accounts
+    private void transferBetweenAccounts() {
+        if (!currentUser.hasBothAccounts()) {
+            System.out.println("Transfer is only available when you have both checking and savings accounts.");
+            return;
+        }
+
+        Account checking = currentUser.getCheckingAccount();
+        Account savings = currentUser.getSavingsAccount();
+
+        System.out.println("Transfer options:");
+        System.out.println("1. Checking to Savings");
+        System.out.println("2. Savings to Checking");
+        System.out.print("Choose transfer option: ");
+
+        int transferChoice = scanner.nextInt();
+
+        System.out.print("Enter transfer amount: $");
+        double amount = scanner.nextDouble();
+
+        if (amount <= 0) {
+            System.out.println("Error: Transfer amount must be greater than 0.");
+            return;
+        }
+
+        if (transferChoice == 1) {
+            if (amount > checking.getBalance()) {
+                System.out.println("Error: Insufficient funds in checking account.");
+            } else {
+                checking.withdraw(amount);
+                savings.deposit(amount);
+                System.out.println("Transfer successful.");
+                System.out.println("Checking balance: $" + checking.getBalance());
+                System.out.println("Savings balance: $" + savings.getBalance());
+            }
+        } else if (transferChoice == 2) {
+            if (amount > savings.getBalance()) {
+                System.out.println("Error: Insufficient funds in savings account.");
+            } else {
+                savings.withdraw(amount);
+                checking.deposit(amount);
+                System.out.println("Transfer successful.");
+                System.out.println("Checking balance: $" + checking.getBalance());
+                System.out.println("Savings balance: $" + savings.getBalance());
+            }
+        } else {
+            System.out.println("Error: Invalid transfer option.");
+        }
+    }
+
     public void start() {
 
         if (!login()) {
@@ -106,7 +156,8 @@ public class ATM {
             System.out.println("2. Deposit Money");
             System.out.println("3. Withdraw Money");
             System.out.println("4. View Transaction History");
-            System.out.println("5. Exit");
+            System.out.println("5. Transfer Between Accounts");
+            System.out.println("6. Exit");
 
             System.out.print("Choose an option: ");
 
@@ -143,16 +194,20 @@ public class ATM {
                 account.displayTransactionHistory();
             }
 
-            // If the user chooses option 5, exit the ATM
+            // If the user chooses option 5, transfer money between checking and savings
             else if (choice == 5) {
+                transferBetweenAccounts();
+            }
+
+            // If the user chooses option 5, exit the ATM
+            else if (choice == 6) {
                 System.out.println("Thank you for using the ATM. Goodbye!");
                 isRunning = false;
             }
 
             // If the user enters a number that is not on the menu, show an error message
             else {
-                System.out.println("Error: Invalid option. Please choose 1, 2, 3, 4, or 5.");
-            }
+                System.out.println("Error: Invalid option. Please choose 1, 2, 3, 4, 5, or 6.");            }
         }
     }
 }
