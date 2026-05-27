@@ -161,7 +161,6 @@ Future Improvements
 Future improvements may include:
 
 * Support for more advanced user account management
-* Improved transfer transaction history with Transfer In and Transfer Out labels
 * PIN-only login to better simulate a real ATM card insertion flow
 * Java Swing or JavaFX graphical user interface
 * Database storage for users, accounts, and transactions
