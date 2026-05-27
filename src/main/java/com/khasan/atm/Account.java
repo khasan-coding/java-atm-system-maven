@@ -25,6 +25,11 @@ public class Account {
         return accountNumber;
     }
 
+    // Returns the transaction history for this account
+    public ArrayList<Transaction> getTransactions() {
+        return transactions;
+    }
+
     // Adds money to the account only if the amount is greater than 0
     public void deposit(double amount) {
         if (amount > 0) {
@@ -67,7 +72,7 @@ public class Account {
         if (transactions.isEmpty()) {
             System.out.println("No transactions found.");
         } else {
-            System.out.println("===== com.khasan.atm.Transaction History =====");
+            System.out.println("===== Transaction History =====");
 
             for (Transaction transaction : transactions) {
                 transaction.displayTransaction();

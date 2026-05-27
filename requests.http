@@ -146,3 +146,9 @@ Content-Type: application/json
   "toAccountNumber": "9999",
   "amount": 100
 }
+
+### Get transaction history
+GET http://localhost:8080/api/accounts/1001/transactions
+
+### Get transaction history for account not found
+GET http://localhost:8080/api/accounts/9999/transactions

@@ -1,5 +1,5 @@
 package com.khasan.atm;
-
+import java.util.ArrayList;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -180,5 +180,16 @@ public class AccountController {
         );
 
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/api/accounts/{accountNumber}/transactions")
+    public ResponseEntity<ArrayList<Transaction>> getTransactionHistory(@PathVariable String accountNumber) {
+        Account account = atmService.findAccountByAccountNumber(accountNumber);
+
+        if (account == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+
+        return ResponseEntity.ok(account.getTransactions());
     }
 }
