@@ -6,7 +6,9 @@ Java ATM Banking System
 
 ## Testing Overview
 
-The project was manually tested through the console. The purpose of testing was to verify that login, deposit, withdrawal, balance inquiry, transaction history, and exit functionality worked correctly.
+The project was manually tested through the console. The purpose of testing was to verify that login, account selection, deposit, withdrawal, balance inquiry, transaction history, transfer functionality, and exit functionality worked correctly.
+
+The project also includes automated unit tests using JUnit for core logic in the `Account` and `User` classes.
 
 ## Manual Test Cases
 
@@ -22,13 +24,25 @@ The project was manually tested through the console. The purpose of testing was 
 | T8 | Invalid withdrawal | Choose option `3` and enter `-50` | Error message appears and balance does not change | Passed |
 | T9 | Overdraft attempt | Choose option `3` and enter amount greater than balance | Insufficient funds message appears and balance does not change | Passed |
 | T10 | View transaction history | Make a valid deposit and withdrawal, then choose option `4` | Transaction history displays successful transactions | Passed |
-| T11 | Invalid menu option | Enter a number outside `1-5` | Error message appears asking user to choose a valid option | Passed |
-| T12 | Exit ATM | Choose option `5` | Goodbye message appears and program ends | Passed |
+| T11 | Invalid menu option | Enter a number outside the available menu options | Error message appears asking user to choose a valid option | Passed |
+| T12 | Exit ATM | Choose option `6` | Goodbye message appears and program ends | Passed |
 | T13 | Login as second user | Enter card number `222222` and PIN `2222` | Login successful message appears and ATM welcomes Alex | Passed |
 | T14 | Login as third user | Enter card number `333333` and PIN `3333` | Login successful message appears and ATM welcomes Maria | Passed |
 | T15 | Separate user balances | Log in as Alex and check balance | Alex's account balance displays independently from other users | Passed |
+| T16 | Select checking account | Log in as Khasan and choose checking account | Checking account is selected and ATM menu opens | Passed |
+| T17 | Select savings account | Log in as Khasan and choose savings account | Savings account is selected and ATM menu opens | Passed |
+| T18 | Checking-only user account selection | Log in as Alex | Checking account is selected automatically | Passed |
+| T19 | Savings-only user account selection | Log in as Maria | Savings account is selected automatically | Passed |
+| T20 | Transfer from checking to savings | Log in as Khasan, choose transfer option, transfer `100` from checking to savings | Checking balance decreases by `100` and savings balance increases by `100` | Passed |
+| T21 | Transfer from savings to checking | Log in as Khasan, choose transfer option, transfer `100` from savings to checking | Savings balance decreases by `100` and checking balance increases by `100` | Passed |
+| T22 | Transfer unavailable for checking-only user | Log in as Alex and choose transfer option | Message appears saying transfer is only available with both checking and savings accounts | Passed |
+| T23 | Transfer unavailable for savings-only user | Log in as Maria and choose transfer option | Message appears saying transfer is only available with both checking and savings accounts | Passed |
+| T24 | Invalid transfer amount | Log in as Khasan and enter a transfer amount of `-100` | Error message appears and balances do not change | Passed |
+| T25 | Transfer with insufficient funds | Log in as Khasan and transfer more than the source account balance | Insufficient funds message appears and balances do not change | Passed |
 
+## Automated Unit Tests
 
-## Notes
+Automated unit tests are written using JUnit and are located in:
 
-These tests were performed manually through the IntelliJ console. A future improvement would be to add automated unit tests using JUnit.
+```text
+src/test/java
