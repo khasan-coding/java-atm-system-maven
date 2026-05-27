@@ -118,4 +118,67 @@ public class AccountController {
 
         return ResponseEntity.ok(response);
     }
+
+
+    @PostMapping("/api/transfer")
+    public ResponseEntity<TransferResponse> transfer(@RequestBody TransferRequest request) {
+        Account fromAccount = atmService.findAccountByAccountNumber(request.getFromAccountNumber());
+        Account toAccount = atmService.findAccountByAccountNumber(request.getToAccountNumber());
+
+        if (fromAccount == null || toAccount == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+
+        if (request.getFromAccountNumber().equals(request.getToAccountNumber())) {
+            TransferResponse response = new TransferResponse(
+                    "Source and destination accounts must be different",
+                    fromAccount.getAccountNumber(),
+                    toAccount.getAccountNumber(),
+                    fromAccount.getBalance(),
+                    toAccount.getBalance()
+            );
+
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        }
+
+        if (request.getAmount() <= 0) {
+            TransferResponse response = new TransferResponse(
+                    "Transfer amount must be greater than 0",
+                    fromAccount.getAccountNumber(),
+                    toAccount.getAccountNumber(),
+                    fromAccount.getBalance(),
+                    toAccount.getBalance()
+            );
+
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        }
+
+        if (request.getAmount() > fromAccount.getBalance()) {
+            TransferResponse response = new TransferResponse(
+                    "Insufficient funds",
+                    fromAccount.getAccountNumber(),
+                    toAccount.getAccountNumber(),
+                    fromAccount.getBalance(),
+                    toAccount.getBalance()
+            );
+
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        }
+
+        fromAccount.decreaseBalance(request.getAmount());
+        fromAccount.addTransaction("Transfer Out", request.getAmount());
+
+        toAccount.increaseBalance(request.getAmount());
+        toAccount.addTransaction("Transfer In", request.getAmount());
+
+        TransferResponse response = new TransferResponse(
+                "Transfer successful",
+                fromAccount.getAccountNumber(),
+                toAccount.getAccountNumber(),
+                fromAccount.getBalance(),
+                toAccount.getBalance()
+        );
+
+        return ResponseEntity.ok(response);
+    }
 }

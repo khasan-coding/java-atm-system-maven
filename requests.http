@@ -95,3 +95,54 @@ Content-Type: application/json
 {
   "amount": 50
 }
+
+
+### Transfer from checking to savings
+POST http://localhost:8080/api/transfer
+Content-Type: application/json
+
+{
+  "fromAccountNumber": "1001",
+  "toAccountNumber": "1002",
+  "amount": 100
+}
+
+### Invalid transfer amount
+POST http://localhost:8080/api/transfer
+Content-Type: application/json
+
+{
+  "fromAccountNumber": "1001",
+  "toAccountNumber": "1002",
+  "amount": -100
+}
+
+### Transfer with insufficient funds
+POST http://localhost:8080/api/transfer
+Content-Type: application/json
+
+{
+  "fromAccountNumber": "1001",
+  "toAccountNumber": "1002",
+  "amount": 10000
+}
+
+### Transfer to same account
+POST http://localhost:8080/api/transfer
+Content-Type: application/json
+
+{
+  "fromAccountNumber": "1001",
+  "toAccountNumber": "1001",
+  "amount": 100
+}
+
+### Transfer with account not found
+POST http://localhost:8080/api/transfer
+Content-Type: application/json
+
+{
+  "fromAccountNumber": "1001",
+  "toAccountNumber": "9999",
+  "amount": 100
+}
