@@ -2,9 +2,6 @@ name: Maven Test
 
 on:
   push:
-    branches:
-      - master
-      - feature/account-transfer
   pull_request:
     branches:
       - master
