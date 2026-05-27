@@ -6,6 +6,8 @@ The Java ATM Banking System is a console-based application built with plain Java
 This project was built step by step using SDLC, Agile-style iterations, Git version control, manual testing, and object-oriented design principles.
 The Maven version of this project also includes automated unit testing with JUnit.
 ## Features
+- Support for multiple users
+- Each user has their own account balance and transaction history
 - User login with card number and PIN
 - Three-attempt login limit
 - Personalized welcome message
@@ -131,7 +133,7 @@ Future Improvements
 
 Future improvements may include:
 
-* Support for multiple users
+* Support for more advanced user account management
 * Separate checking and savings accounts
 * Account transfer feature
 * PIN-only login to better simulate a real ATM card insertion flow
