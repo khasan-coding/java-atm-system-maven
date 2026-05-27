@@ -15,3 +15,15 @@ Content-Type: application/json
   "cardNumber": "123456",
   "pin": "9999"
 }
+
+### Get Khasan accounts
+GET http://localhost:8080/api/users/123456/accounts
+
+### Get Alex accounts
+GET http://localhost:8080/api/users/222222/accounts
+
+### Get Maria accounts
+GET http://localhost:8080/api/users/333333/accounts
+
+### User not found
+GET http://localhost:8080/api/users/999999/accounts

@@ -37,4 +37,14 @@ public class AtmService {
 
         return null;
     }
+
+    public User findUserByCardNumber(String cardNumber) {
+        for (User user : users) {
+            if (user.isCardNumberCorrect(cardNumber)) {
+                return user;
+            }
+        }
+
+        return null;
+    }
 }
