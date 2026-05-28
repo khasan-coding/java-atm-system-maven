@@ -65,23 +65,31 @@ java-atm-system-maven/
 │   │           └── khasan/
 │   │               └── atm/
 │   │                   ├── AtmApplication.java
-│   │                   ├── HealthController.java
-│   │                   ├── LoginController.java
-│   │                   ├── AccountController.java
-│   │                   ├── AtmService.java
-│   │                   ├── LoginRequest.java
-│   │                   ├── LoginResponse.java
-│   │                   ├── AccountSummaryResponse.java
-│   │                   ├── BalanceResponse.java
-│   │                   ├── AmountRequest.java
-│   │                   ├── TransactionResponse.java
-│   │                   ├── TransferRequest.java
-│   │                   ├── TransferResponse.java
-│   │                   ├── Main.java
-│   │                   ├── ATM.java
-│   │                   ├── User.java
-│   │                   ├── Account.java
-│   │                   └── Transaction.java
+│   │                   │
+│   │                   ├── controller/
+│   │                   │   ├── HealthController.java
+│   │                   │   ├── LoginController.java
+│   │                   │   └── AccountController.java
+│   │                   │
+│   │                   ├── service/
+│   │                   │   └── AtmService.java
+│   │                   │
+│   │                   ├── model/
+│   │                   │   ├── Main.java
+│   │                   │   ├── ATM.java
+│   │                   │   ├── User.java
+│   │                   │   ├── Account.java
+│   │                   │   └── Transaction.java
+│   │                   │
+│   │                   └── dto/
+│   │                       ├── LoginRequest.java
+│   │                       ├── LoginResponse.java
+│   │                       ├── AccountSummaryResponse.java
+│   │                       ├── BalanceResponse.java
+│   │                       ├── AmountRequest.java
+│   │                       ├── TransactionResponse.java
+│   │                       ├── TransferRequest.java
+│   │                       └── TransferResponse.java
 │   │
 │   └── test/
 │       └── java/
