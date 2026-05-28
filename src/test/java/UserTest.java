@@ -1,5 +1,5 @@
-import com.khasan.atm.Account;
-import com.khasan.atm.User;
+import com.khasan.atm.model.Account;
+import com.khasan.atm.model.User;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;

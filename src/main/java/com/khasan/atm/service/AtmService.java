@@ -1,5 +1,7 @@
-package com.khasan.atm;
+package com.khasan.atm.service;
 
+import com.khasan.atm.model.Account;
+import com.khasan.atm.model.User;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

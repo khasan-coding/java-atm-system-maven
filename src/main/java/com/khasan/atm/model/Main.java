@@ -1,4 +1,4 @@
-package com.khasan.atm;
+package com.khasan.atm.model;
 
 import java.util.ArrayList;
 
@@ -28,10 +28,10 @@ public class Main {
         users.add(alex);
         users.add(maria);
 
-        // Create an com.khasan.atm.ATM object and give it the list of users
+        // Create an com.khasan.atm.model.ATM object and give it the list of users
         ATM atm = new ATM(users);
 
-        // Start the com.khasan.atm.ATM menu
+        // Start the com.khasan.atm.model.ATM menu
         atm.start();
     }
 }

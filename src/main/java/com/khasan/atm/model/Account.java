@@ -1,4 +1,4 @@
-package com.khasan.atm;
+package com.khasan.atm.model;
 
 import java.util.ArrayList;
 

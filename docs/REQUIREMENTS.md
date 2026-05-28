@@ -2,11 +2,11 @@
 
 ## Project Name
 
-Java com.khasan.atm.ATM Banking System
+Java com.khasan.atm.model.ATM Banking System
 
 ## Project Purpose
 
-The purpose of this project is to build a console-based com.khasan.atm.ATM system using plain Java and object-oriented programming. The system allows users to log in, select an available account, check balance, deposit money, withdraw money, transfer money between checking and savings accounts, view transaction history, and exit the com.khasan.atm.ATM.
+The purpose of this project is to build a console-based com.khasan.atm.model.ATM system using plain Java and object-oriented programming. The system allows users to log in, select an available account, check balance, deposit money, withdraw money, transfer money between checking and savings accounts, view transaction history, and exit the com.khasan.atm.model.ATM.
 
 ## Functional Requirements
 
@@ -24,7 +24,7 @@ The purpose of this project is to build a console-based com.khasan.atm.ATM syste
 - The system shall allow the user to view transaction history for the selected account.
 - The system shall allow users with both checking and savings accounts to transfer money between those accounts.
 - The system shall prevent transfers when the user does not have both checking and savings accounts.
-- The system shall allow the user to exit the com.khasan.atm.ATM.
+- The system shall allow the user to exit the com.khasan.atm.model.ATM.
 
 ## Non-Functional Requirements
 
@@ -34,7 +34,7 @@ The purpose of this project is to build a console-based com.khasan.atm.ATM syste
 - The system should be organized using separate classes and responsibilities.
 - The system should be maintainable and easy to expand in future versions.
 - The system should avoid crashes when a user does not have a checking account or savings account.
-- The system should keep account logic separate from com.khasan.atm.ATM menu logic.
+- The system should keep account logic separate from com.khasan.atm.model.ATM menu logic.
 
 ## Business Rules
 

@@ -1,5 +1,9 @@
-package com.khasan.atm;
+package com.khasan.atm.controller;
 
+import com.khasan.atm.service.AtmService;
+import com.khasan.atm.dto.LoginRequest;
+import com.khasan.atm.dto.LoginResponse;
+import com.khasan.atm.model.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,4 +1,4 @@
-package com.khasan.atm;
+package com.khasan.atm.model;
 
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -160,12 +160,12 @@ public class ATM {
 
         while (isRunning) {
 
-            // Display the com.khasan.atm.ATM menu
-            System.out.println("===== com.khasan.atm.ATM Menu =====");
+            // Display the com.khasan.atm.model.ATM menu
+            System.out.println("===== com.khasan.atm.model.ATM Menu =====");
             System.out.println("1. Check Balance");
             System.out.println("2. Deposit Money");
             System.out.println("3. Withdraw Money");
-            System.out.println("4. View com.khasan.atm.Transaction History");
+            System.out.println("4. View com.khasan.atm.model.Transaction History");
             System.out.println("5. Transfer Between Accounts");
             System.out.println("6. Exit");
 
@@ -209,9 +209,9 @@ public class ATM {
                 transferBetweenAccounts();
             }
 
-            // If the user chooses option 6, exit the com.khasan.atm.ATM
+            // If the user chooses option 6, exit the com.khasan.atm.model.ATM
             else if (choice == 6) {
-                System.out.println("Thank you for using the com.khasan.atm.ATM. Goodbye!");
+                System.out.println("Thank you for using the com.khasan.atm.model.ATM. Goodbye!");
                 isRunning = false;
             }
 
