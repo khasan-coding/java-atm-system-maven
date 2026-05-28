@@ -26,6 +26,7 @@ The project started as a console-based Java application and is now being expande
 - Transfer money between checking and savings accounts
 - View transaction history
 - Spring Boot REST API endpoints
+- JSON error responses for failed API requests
 - Maven-based JUnit unit testing
 - GitHub Actions CI pipeline
 
@@ -89,7 +90,8 @@ java-atm-system-maven/
 │   │                       ├── AmountRequest.java
 │   │                       ├── TransactionResponse.java
 │   │                       ├── TransferRequest.java
-│   │                       └── TransferResponse.java
+│   │                       ├── TransferResponse.java
+│   │                       └── ErrorResponse.java
 │   │
 │   └── test/
 │       └── java/
@@ -109,7 +111,7 @@ java-atm-system-maven/
 1. Open the project in IntelliJ IDEA.
 2. Make sure the project is using Java 17 or later.
 3. Make sure Maven is loaded.
-4. Open `Main.java` inside `src/main/java/com/khasan/atm`.
+4. Open `Main.java` inside `src/main/java/com/khasan/atm/model`.
 5. Click Run.
 6. Log in using one of the sample credentials below.
 
@@ -190,6 +192,32 @@ The Spring Boot backend currently supports the following API endpoints:
 
 API requests were tested using the IntelliJ HTTP Client in `requests.http`.
 
+### API Error Responses
+
+The API returns JSON error messages for failed requests.
+
+Examples:
+
+```json
+{
+  "message": "Account not found"
+}
+```
+
+```json
+{
+  "message": "User not found"
+}
+```
+
+Common error status codes:
+
+| Status Code | Meaning |
+|---|---|
+| `400 Bad Request` | Invalid amount, insufficient funds, or invalid transfer request |
+| `401 Unauthorized` | Invalid login credentials |
+| `404 Not Found` | User or account was not found |
+
 ## Testing
 
 The project includes both manual functional testing and automated unit testing.
@@ -262,7 +290,7 @@ The project was developed in small increments, similar to Agile sprints. Each fe
 
 ## Current Version Highlights
 
-The current version supports multiple users, checking and savings accounts, account selection, transfers, transaction history, Maven/JUnit testing, GitHub Actions CI, and Spring Boot REST API endpoints.
+The current version supports multiple users, checking and savings accounts, account selection, transfers, transaction history, Maven/JUnit testing, GitHub Actions CI, Spring Boot REST API endpoints, and JSON error responses.
 
 ## Future Improvements
 
