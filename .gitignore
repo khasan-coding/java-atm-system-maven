@@ -1,4 +1,10 @@
+### Maven / Java Build Output ###
+target/
+*.class
+
 ### IntelliJ IDEA ###
+.idea/
+*.iml
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
