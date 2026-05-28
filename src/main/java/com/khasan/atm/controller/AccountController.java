@@ -1,5 +1,4 @@
 package com.khasan.atm.controller;
-import java.util.ArrayList;
 
 import com.khasan.atm.dto.*;
 import com.khasan.atm.model.Account;
@@ -9,8 +8,8 @@ import com.khasan.atm.service.AtmService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.ArrayList;
 
 @RestController
 public class AccountController {
@@ -22,11 +21,12 @@ public class AccountController {
     }
 
     @GetMapping("/api/users/{cardNumber}/accounts")
-    public ResponseEntity<AccountSummaryResponse> getUserAccounts(@PathVariable String cardNumber) {
+    public ResponseEntity<?> getUserAccounts(@PathVariable String cardNumber) {
         User user = atmService.findUserByCardNumber(cardNumber);
 
         if (user == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new ErrorResponse("User not found"));
         }
 
         AccountSummaryResponse response = new AccountSummaryResponse(
@@ -39,27 +39,32 @@ public class AccountController {
     }
 
     @GetMapping("/api/accounts/{accountNumber}/balance")
-    public ResponseEntity<BalanceResponse> getAccountBalance(@PathVariable String accountNumber) {
+    public ResponseEntity<?> getAccountBalance(@PathVariable String accountNumber) {
         Account account = atmService.findAccountByAccountNumber(accountNumber);
 
         if (account == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new ErrorResponse("Account not found"));
         }
 
-        BalanceResponse response = new BalanceResponse(account.getAccountNumber(), account.getBalance());
+        BalanceResponse response = new BalanceResponse(
+                account.getAccountNumber(),
+                account.getBalance()
+        );
 
         return ResponseEntity.ok(response);
     }
 
     @PostMapping("/api/accounts/{accountNumber}/deposit")
-    public ResponseEntity<TransactionResponse> deposit(
+    public ResponseEntity<?> deposit(
             @PathVariable String accountNumber,
             @RequestBody AmountRequest request) {
 
         Account account = atmService.findAccountByAccountNumber(accountNumber);
 
         if (account == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new ErrorResponse("Account not found"));
         }
 
         if (request.getAmount() <= 0) {
@@ -84,14 +89,15 @@ public class AccountController {
     }
 
     @PostMapping("/api/accounts/{accountNumber}/withdraw")
-    public ResponseEntity<TransactionResponse> withdraw(
+    public ResponseEntity<?> withdraw(
             @PathVariable String accountNumber,
             @RequestBody AmountRequest request) {
 
         Account account = atmService.findAccountByAccountNumber(accountNumber);
 
         if (account == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new ErrorResponse("Account not found"));
         }
 
         if (request.getAmount() <= 0) {
@@ -125,14 +131,14 @@ public class AccountController {
         return ResponseEntity.ok(response);
     }
 
-
     @PostMapping("/api/transfer")
-    public ResponseEntity<TransferResponse> transfer(@RequestBody TransferRequest request) {
+    public ResponseEntity<?> transfer(@RequestBody TransferRequest request) {
         Account fromAccount = atmService.findAccountByAccountNumber(request.getFromAccountNumber());
         Account toAccount = atmService.findAccountByAccountNumber(request.getToAccountNumber());
 
         if (fromAccount == null || toAccount == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new ErrorResponse("One or both accounts not found"));
         }
 
         if (request.getFromAccountNumber().equals(request.getToAccountNumber())) {
@@ -189,13 +195,16 @@ public class AccountController {
     }
 
     @GetMapping("/api/accounts/{accountNumber}/transactions")
-    public ResponseEntity<ArrayList<Transaction>> getTransactionHistory(@PathVariable String accountNumber) {
+    public ResponseEntity<?> getTransactionHistory(@PathVariable String accountNumber) {
         Account account = atmService.findAccountByAccountNumber(accountNumber);
 
         if (account == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new ErrorResponse("Account not found"));
         }
 
-        return ResponseEntity.ok(account.getTransactions());
+        ArrayList<Transaction> transactions = account.getTransactions();
+
+        return ResponseEntity.ok(transactions);
     }
 }
